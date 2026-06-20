@@ -1,0 +1,6 @@
+@SmartBank.NotificationService_HostAddress = http://localhost:5059
+
+GET {{SmartBank.NotificationService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

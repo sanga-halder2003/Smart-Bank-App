@@ -1,0 +1,6 @@
+@SmartBank.CustomerServie_HostAddress = http://localhost:5098
+
+GET {{SmartBank.CustomerServie_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

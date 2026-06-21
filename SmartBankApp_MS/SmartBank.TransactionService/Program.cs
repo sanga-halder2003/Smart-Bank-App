@@ -1,31 +1,27 @@
-namespace SmartBank.TransactionService
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using SmartBank.TransactionService.Data;
+using SmartBank.TransactionService.Services;
 
-            builder.Services.AddControllers();
+var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+// Add services
+builder.Services.AddControllers();
 
-            var app = builder.Build();
+// ✅ THIS IS THE FIX
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=TransactionDB;Trusted_Connection=True;TrustServerCertificate=True;"));
+builder.Services.AddScoped<TransactionManager>();
 
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-            app.UseHttpsRedirection();
+var app = builder.Build();
+app.UseDeveloperExceptionPage();
+app.UseSwagger();
+app.UseSwaggerUI();
 
-            app.UseAuthorization();
+app.UseAuthorization();
 
-            app.MapControllers();
+app.MapControllers();
 
-            app.Run();
-        }
-    }
-}
+app.Run();

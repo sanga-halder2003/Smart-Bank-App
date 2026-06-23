@@ -1,4 +1,5 @@
 ﻿using SmartBank.AuthService.DTOs;
+using SmartBank.AuthService.Messaging;
 using SmartBank.AuthService.Models;
 using SmartBank.AuthService.Repositories;
 
@@ -8,10 +9,13 @@ namespace SmartBank.AuthService.Services
     {
         private readonly IAuthRepository _authRepository;
         private readonly IJwtService _jwtService;
-        public AuthService(IAuthRepository authRepository, IJwtService jwtService)
+        private readonly IRabbitMQPublisher _rabbitMQPublisher;
+        public AuthService(IAuthRepository authRepository, IJwtService jwtService, IRabbitMQPublisher rabbitMQPublisher)
         {
             _authRepository = authRepository;
             _jwtService = jwtService;
+            _rabbitMQPublisher = rabbitMQPublisher;
+
         }
 
         public async Task<string> RegisterAsync(RegisterRequestDto request)
@@ -46,6 +50,15 @@ namespace SmartBank.AuthService.Services
 
             await _authRepository.AddUserAsync(user);
             await _authRepository.SaveChangesAsync();
+
+            var userEvent = new UserRegisteredEvent
+            {
+                FullName = user.FullName,
+                Email = user.Email,
+                RoleName = role.RoleName
+            };
+
+            await _rabbitMQPublisher.PublishUserRegisteredEventAsync(userEvent);
 
             return "User registered successfully";
         }

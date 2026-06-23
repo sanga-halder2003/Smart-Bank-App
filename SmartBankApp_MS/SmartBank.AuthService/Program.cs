@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
 using SmartBank.AuthService.Data;
+using SmartBank.AuthService.Messaging;
 using SmartBank.AuthService.Repositories;
 using SmartBank.AuthService.Services;
 using System.Text;
@@ -51,6 +52,7 @@ namespace SmartBank.AuthService
             builder.Services.AddScoped<IAuthRepository, AuthRepository>();
             builder.Services.AddScoped<IAuthService, Services.AuthService>();
             builder.Services.AddScoped<IJwtService, JwtService>();
+            builder.Services.AddScoped<IRabbitMQPublisher, RabbitMQPublisher>();
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -68,6 +70,7 @@ namespace SmartBank.AuthService
                             Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
                     };
                 });
+
 
             builder.Services.AddAuthorization();
 

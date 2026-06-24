@@ -1,4 +1,7 @@
 
+using SmartBank.NotificationService.Repositories;
+using SmartBank.NotificationService.Services;
+
 namespace SmartBank.NotificationService
 {
     public class Program
@@ -7,9 +10,18 @@ namespace SmartBank.NotificationService
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
             builder.Services.AddControllers();
+
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+            // Add services to the container.
+            builder.Services.AddScoped<IEmailService, EmailService>();
+            builder.Services.AddScoped<IMessageService, MessageService>();
+
+            builder.Services.AddScoped<IEmailRepository, EmailRepository>();
+            builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
@@ -19,6 +31,8 @@ namespace SmartBank.NotificationService
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();

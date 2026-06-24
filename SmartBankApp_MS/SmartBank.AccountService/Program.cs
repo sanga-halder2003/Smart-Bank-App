@@ -5,7 +5,7 @@ using SmartBank.AccountService.Repositories;
 using SmartBank.AccountService.Services;
 using SmartBank.AccountService.Middleware;
 using SmartBank.AccountService.Messaging;
-
+using SmartBank.AccountService.Messaging;
 
 namespace SmartBank.AccountService
 {
@@ -29,8 +29,10 @@ namespace SmartBank.AccountService
             builder.Services.AddScoped<IAccountService,
             SmartBank.AccountService.Services.AccountService>();
             builder.Services.AddScoped<
-    IRabbitMQPublisher,
-    RabbitMQPublisher>();
+            IRabbitMQPublisher,
+            RabbitMQPublisher>();
+
+            builder.Services.AddHostedService<CustomerCreatedConsumer>();
 
             var app = builder.Build();
 

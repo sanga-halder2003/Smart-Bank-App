@@ -60,6 +60,10 @@ namespace SmartBank.CustomerServie.Messaging
                         scope.ServiceProvider
                              .GetRequiredService<ICustomerRepository>();
 
+                    var publisher =
+                        scope.ServiceProvider
+                             .GetRequiredService<ICustomerPublisher>();
+
                     var customer = new Customer
                     {
                         FullName = userEvent.FullName,
@@ -68,7 +72,18 @@ namespace SmartBank.CustomerServie.Messaging
                         Address = ""
                     };
 
-                    await repository.AddAsync(customer);
+                    var savedCustomer =
+                        await repository.AddAsync(customer);
+
+                    await publisher.PublishCustomerCreatedEventAsync(
+                        new CustomerCreatedEvent
+                        {
+                            CustomerId = savedCustomer.Id,
+                            FullName = savedCustomer.FullName,
+                            Email = savedCustomer.Email,
+                            Phone = savedCustomer.Phone,
+                            Address = savedCustomer.Address
+                        });
                 }
             };
 

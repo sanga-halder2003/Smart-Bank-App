@@ -26,6 +26,8 @@ namespace SmartBank.CustomerServie
                 ICustomerService,
                 SmartBank.CustomerServie.Services.CustomerService>();
 
+            builder.Services.AddScoped<ICustomerPublisher, CustomerPublisher>();
+
             builder.Services.AddSingleton<RabbitMQConsumer>();
 
             // Swagger

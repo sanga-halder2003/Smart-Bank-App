@@ -15,9 +15,36 @@ namespace SmartBank.TransactionService.Services
             _context = context;
         }
 
+        // ✅ Calculate Balance
+        private async Task<decimal> GetBalance(int accountId)
+        {
+            var transactions = await _context.Transactions
+                .Where(t => t.AccountId == accountId)
+                .ToListAsync();
+
+            decimal balance = 0;
+
+            foreach (var t in transactions)
+            {
+                if (t.Type == "Deposit")
+                    balance += t.Amount;
+
+                else if (t.Type == "Withdraw")
+                    balance -= t.Amount;
+
+                else if (t.Type == "Transfer")
+                    balance -= t.Amount;
+            }
+
+            return balance;
+        }
+
         // ✅ DEPOSIT
         public async Task Deposit(DepositDto dto)
         {
+            if (dto.Amount <= 0)
+                throw new Exception("Amount must be greater than zero");
+
             _context.Transactions.Add(new Transaction
             {
                 AccountId = dto.AccountId,
@@ -27,7 +54,6 @@ namespace SmartBank.TransactionService.Services
 
             await _context.SaveChangesAsync();
 
-            // ✅ Publish Event
             var publisher = new RabbitMQPublisher();
 
             var data = new
@@ -43,6 +69,14 @@ namespace SmartBank.TransactionService.Services
         // ✅ WITHDRAW
         public async Task Withdraw(WithdrawDto dto)
         {
+            if (dto.Amount <= 0)
+                throw new Exception("Invalid withdraw amount");
+
+            var balance = await GetBalance(dto.AccountId);
+
+            if (balance < dto.Amount)
+                throw new Exception("Balance cannot be negative");
+
             _context.Transactions.Add(new Transaction
             {
                 AccountId = dto.AccountId,
@@ -52,7 +86,6 @@ namespace SmartBank.TransactionService.Services
 
             await _context.SaveChangesAsync();
 
-            // ✅ Publish Event
             var publisher = new RabbitMQPublisher();
 
             var data = new
@@ -63,12 +96,26 @@ namespace SmartBank.TransactionService.Services
             };
 
             publisher.Publish(data, "money-withdrawn-queue");
-
         }
 
         // ✅ TRANSFER
         public async Task Transfer(TransferDto dto)
         {
+            if (dto.Amount <= 0)
+                throw new Exception("Invalid transfer amount");
+
+            if (dto.FromAccountId == dto.ToAccountId)
+                throw new Exception("Cannot transfer to same account");
+
+            var balance = await GetBalance(dto.FromAccountId);
+
+            if (balance < dto.Amount)
+                throw new Exception("Insufficient balance");
+
+            // ✅ Basic destination validation
+            if (dto.ToAccountId <= 0)
+                throw new Exception("Invalid destination account");
+
             _context.Transactions.Add(new Transaction
             {
                 AccountId = dto.FromAccountId,
@@ -79,7 +126,6 @@ namespace SmartBank.TransactionService.Services
 
             await _context.SaveChangesAsync();
 
-            // ✅ Publish Event
             var publisher = new RabbitMQPublisher();
 
             var data = new
@@ -91,10 +137,9 @@ namespace SmartBank.TransactionService.Services
             };
 
             publisher.Publish(data, "money-transferred-queue");
-
         }
 
-        // ✅ STATEMENT (READ ONLY - NO EVENT)
+        // ✅ STATEMENT (READ ONLY)
         public async Task<List<Transaction>> GetStatement(int accountId)
         {
             return await _context.Transactions

@@ -20,6 +20,13 @@ namespace SmartBank.AuthService.Services
 
         public async Task<string> RegisterAsync(RegisterRequestDto request)
         {
+            var allowedRoles = new[] { "Admin", "Manager", "Customer" };
+
+            if (!allowedRoles.Contains(request.RoleName))
+            {
+                return "Invalid role. Allowed roles are Admin, Manager, Customer";
+            }
+
             var existingUser = await _authRepository.GetUserByEmailAsync(request.Email);
 
             if (existingUser != null)

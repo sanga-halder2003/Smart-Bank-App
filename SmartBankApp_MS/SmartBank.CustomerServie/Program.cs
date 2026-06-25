@@ -12,42 +12,43 @@ namespace SmartBank.CustomerServie
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add Services
+            // ✅ FIX PORT
+            builder.WebHost.UseUrls("http://localhost:5098");
+
+            // ✅ Services
             builder.Services.AddControllers();
 
             builder.Services.AddDbContext<CustomerDbContext>(options =>
                 options.UseSqlServer(
                     builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            // Dependency Injection
+            // ✅ DI
             builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
-
-            builder.Services.AddScoped<
-                ICustomerService,
+            builder.Services.AddScoped<ICustomerService,
                 SmartBank.CustomerServie.Services.CustomerService>();
-
             builder.Services.AddScoped<ICustomerPublisher, CustomerPublisher>();
 
             builder.Services.AddSingleton<RabbitMQConsumer>();
 
-            // Swagger
+            // ✅ Swagger
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
-            // Start RabbitMQ Consumer
+            // ✅ Start RabbitMQ consumer
             var consumer = app.Services.GetRequiredService<RabbitMQConsumer>();
             await consumer.StartConsumingAsync();
 
-            // Configure Pipeline
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            // ✅ ✅ ALWAYS ENABLE SWAGGER
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
-            app.UseHttpsRedirection();
+            // ❌ REMOVE HTTPS (important for your case)
+            // app.UseHttpsRedirection();
+
+            // ✅ Test endpoint
+            app.MapGet("/", () => "Customer Service Running ✅");
 
             app.UseAuthorization();
 

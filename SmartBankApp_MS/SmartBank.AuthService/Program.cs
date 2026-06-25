@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
 using SmartBank.AuthService.Data;
 using SmartBank.AuthService.Messaging;
@@ -17,9 +16,14 @@ namespace SmartBank.AuthService
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // ✅ Set fixed port
+            builder.WebHost.UseUrls("http://localhost:5113");
+
+            // ✅ Services
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
 
+            // ✅ Swagger
             builder.Services.AddSwaggerGen(options =>
             {
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -46,14 +50,17 @@ namespace SmartBank.AuthService
                 });
             });
 
+            // ✅ DB
             builder.Services.AddDbContext<AuthDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            // ✅ DI
             builder.Services.AddScoped<IAuthRepository, AuthRepository>();
-            builder.Services.AddScoped<IAuthService, Services.AuthService>();
+            builder.Services.AddScoped<IAuthService, SmartBank.AuthService.Services.AuthService>();
             builder.Services.AddScoped<IJwtService, JwtService>();
             builder.Services.AddScoped<IRabbitMQPublisher, RabbitMQPublisher>();
 
+            // ✅ JWT
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -71,18 +78,19 @@ namespace SmartBank.AuthService
                     };
                 });
 
-
             builder.Services.AddAuthorization();
 
             var app = builder.Build();
 
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            // ✅ ✅ ALWAYS ENABLE SWAGGER
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
-            app.UseHttpsRedirection();
+            // ✅ REMOVE HTTPS (important for your case)
+            // app.UseHttpsRedirection();
+
+            // ✅ Test endpoint (for debugging)
+            app.MapGet("/", () => "API Running ✅");
 
             app.UseAuthentication();
             app.UseAuthorization();

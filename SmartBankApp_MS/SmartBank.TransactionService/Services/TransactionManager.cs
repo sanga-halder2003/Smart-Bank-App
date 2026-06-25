@@ -9,10 +9,12 @@ namespace SmartBank.TransactionService.Services
     public class TransactionManager
     {
         private readonly AppDbContext _context;
+        private readonly IRabbitMQPublisher _publisher;
 
-        public TransactionManager(AppDbContext context)
+        public TransactionManager(AppDbContext context, IRabbitMQPublisher publisher)
         {
             _context = context;
+            _publisher = publisher;
         }
 
         // ✅ Calculate Balance
@@ -49,21 +51,21 @@ namespace SmartBank.TransactionService.Services
             {
                 AccountId = dto.AccountId,
                 Amount = dto.Amount,
-                Type = "Deposit"
+                Type = "Deposit",
+                CreatedAt = DateTime.UtcNow
             });
 
             await _context.SaveChangesAsync();
 
-            var publisher = new RabbitMQPublisher();
-
-            var data = new
+            // ✅ Publish Event
+            var eventMessage = new MoneyDepositedEvent
             {
                 AccountId = dto.AccountId,
                 Amount = dto.Amount,
-                Type = "Deposit"
+                CreatedAt = DateTime.UtcNow
             };
 
-            publisher.Publish(data, "money-deposited-queue");
+            await _publisher.PublishMoneyDepositedEventAsync(eventMessage);
         }
 
         // ✅ WITHDRAW
@@ -81,21 +83,21 @@ namespace SmartBank.TransactionService.Services
             {
                 AccountId = dto.AccountId,
                 Amount = dto.Amount,
-                Type = "Withdraw"
+                Type = "Withdraw",
+                CreatedAt = DateTime.UtcNow
             });
 
             await _context.SaveChangesAsync();
 
-            var publisher = new RabbitMQPublisher();
-
-            var data = new
+            // ✅ Publish Event
+            var eventMessage = new MoneyWithdrawnEvent
             {
                 AccountId = dto.AccountId,
                 Amount = dto.Amount,
-                Type = "Withdraw"
+                CreatedAt = DateTime.UtcNow
             };
 
-            publisher.Publish(data, "money-withdrawn-queue");
+            await _publisher.PublishMoneyWithdrawnEventAsync(eventMessage);
         }
 
         // ✅ TRANSFER
@@ -112,7 +114,6 @@ namespace SmartBank.TransactionService.Services
             if (balance < dto.Amount)
                 throw new Exception("Insufficient balance");
 
-            // ✅ Basic destination validation
             if (dto.ToAccountId <= 0)
                 throw new Exception("Invalid destination account");
 
@@ -121,25 +122,25 @@ namespace SmartBank.TransactionService.Services
                 AccountId = dto.FromAccountId,
                 DestinationAccountId = dto.ToAccountId,
                 Amount = dto.Amount,
-                Type = "Transfer"
+                Type = "Transfer",
+                CreatedAt = DateTime.UtcNow
             });
 
             await _context.SaveChangesAsync();
 
-            var publisher = new RabbitMQPublisher();
-
-            var data = new
+            // ✅ Publish Event
+            var eventMessage = new MoneyTransferredEvent
             {
                 FromAccountId = dto.FromAccountId,
                 ToAccountId = dto.ToAccountId,
                 Amount = dto.Amount,
-                Type = "Transfer"
+                CreatedAt = DateTime.UtcNow
             };
 
-            publisher.Publish(data, "money-transferred-queue");
+            await _publisher.PublishMoneyTransferredEventAsync(eventMessage);
         }
 
-        // ✅ STATEMENT (READ ONLY)
+        // ✅ STATEMENT
         public async Task<List<Transaction>> GetStatement(int accountId)
         {
             return await _context.Transactions

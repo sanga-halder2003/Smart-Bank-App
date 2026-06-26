@@ -3,8 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using SmartBank.AuthService.Data;
 using SmartBank.AuthService.Messaging;
+using SmartBank.AuthService.Middleware;
 using SmartBank.AuthService.Repositories;
 using SmartBank.AuthService.Services;
 using System.Text;
@@ -15,8 +17,12 @@ namespace SmartBank.AuthService
     {
         public static void Main(string[] args)
         {
+            Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .WriteTo.File("Logs/auth-log-.txt", rollingInterval: RollingInterval.Day)
+            .CreateLogger();
             var builder = WebApplication.CreateBuilder(args);
-
+            builder.Host.UseSerilog();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
 
@@ -81,7 +87,7 @@ namespace SmartBank.AuthService
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseHttpsRedirection();
 
             app.UseAuthentication();

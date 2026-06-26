@@ -1,31 +1,40 @@
-namespace SmartBank.TransactionService
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using SmartBank.TransactionService.Data;
+using SmartBank.TransactionService.Services;
+using SmartBank.TransactionService.Messaging;
 
-            builder.Services.AddControllers();
+var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+// ✅ Add services
+builder.Services.AddControllers();
 
-            var app = builder.Build();
+// ✅ Database configuration
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(
+        "Server=localhost\\SQLEXPRESS;Database=TransactionDB;Trusted_Connection=True;TrustServerCertificate=True;"
+    ));
 
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+// ✅ Register Transaction Service
+builder.Services.AddScoped<TransactionManager>();
 
-            app.UseHttpsRedirection();
+// ✅ ✅ Register RabbitMQ Publisher
+builder.Services.AddScoped<IRabbitMQPublisher, RabbitMQPublisher>();
 
-            app.UseAuthorization();
+// ✅ ✅ REGISTER CONSUMER (VERY IMPORTANT FOR FLOW)
+builder.Services.AddHostedService<AccountCreatedConsumer>();
 
-            app.MapControllers();
+// ✅ Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-            app.Run();
-        }
-    }
-}
+var app = builder.Build();
+
+// ✅ Middleware
+app.UseDeveloperExceptionPage();
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.UseAuthorization();
+app.MapControllers();
+
+app.Run();

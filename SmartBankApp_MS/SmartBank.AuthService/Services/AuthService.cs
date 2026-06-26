@@ -10,11 +10,13 @@ namespace SmartBank.AuthService.Services
         private readonly IAuthRepository _authRepository;
         private readonly IJwtService _jwtService;
         private readonly IRabbitMQPublisher _rabbitMQPublisher;
-        public AuthService(IAuthRepository authRepository, IJwtService jwtService, IRabbitMQPublisher rabbitMQPublisher)
+        private readonly ILogger<AuthService> _logger;
+        public AuthService(IAuthRepository authRepository, IJwtService jwtService, IRabbitMQPublisher rabbitMQPublisher, ILogger<AuthService> logger)
         {
             _authRepository = authRepository;
             _jwtService = jwtService;
             _rabbitMQPublisher = rabbitMQPublisher;
+            _logger = logger;
 
         }
 

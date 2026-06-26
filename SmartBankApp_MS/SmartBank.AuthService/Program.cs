@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using SmartBank.AuthService.Data;
 using SmartBank.AuthService.Messaging;
+using SmartBank.AuthService.Middleware;
 using SmartBank.AuthService.Repositories;
 using SmartBank.AuthService.Services;
 using System.Text;
@@ -14,16 +17,15 @@ namespace SmartBank.AuthService
     {
         public static void Main(string[] args)
         {
+            Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .WriteTo.File("Logs/auth-log-.txt", rollingInterval: RollingInterval.Day)
+            .CreateLogger();
             var builder = WebApplication.CreateBuilder(args);
-
-            // ✅ Set fixed port
-            builder.WebHost.UseUrls("http://localhost:5113");
-
-            // ✅ Services
+            builder.Host.UseSerilog();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
 
-            // ✅ Swagger
             builder.Services.AddSwaggerGen(options =>
             {
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -50,17 +52,14 @@ namespace SmartBank.AuthService
                 });
             });
 
-            // ✅ DB
             builder.Services.AddDbContext<AuthDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            // ✅ DI
             builder.Services.AddScoped<IAuthRepository, AuthRepository>();
-            builder.Services.AddScoped<IAuthService, SmartBank.AuthService.Services.AuthService>();
+            builder.Services.AddScoped<IAuthService, Services.AuthService>();
             builder.Services.AddScoped<IJwtService, JwtService>();
             builder.Services.AddScoped<IRabbitMQPublisher, RabbitMQPublisher>();
 
-            // ✅ JWT
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -78,19 +77,18 @@ namespace SmartBank.AuthService
                     };
                 });
 
+
             builder.Services.AddAuthorization();
 
             var app = builder.Build();
 
-            // ✅ ✅ ALWAYS ENABLE SWAGGER
-            app.UseSwagger();
-            app.UseSwaggerUI();
-
-            // ✅ REMOVE HTTPS (important for your case)
-            // app.UseHttpsRedirection();
-
-            // ✅ Test endpoint (for debugging)
-            app.MapGet("/", () => "API Running ✅");
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+            app.UseMiddleware<ExceptionMiddleware>();
+            app.UseHttpsRedirection();
 
             app.UseAuthentication();
             app.UseAuthorization();

@@ -5,6 +5,7 @@ using SmartBank.AccountService.Repositories;
 using SmartBank.AccountService.Services;
 using SmartBank.AccountService.Middleware;
 using SmartBank.AccountService.Messaging;
+using SmartBank.AccountService.Messaging;
 
 namespace SmartBank.AccountService
 {
@@ -13,14 +14,9 @@ namespace SmartBank.AccountService
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
             builder.Logging.ClearProviders();
-            builder.Logging.AddConsole();
+            builder.Logging.AddConsole();   
 
-            // ✅ FIX PORT (correct line)
-            builder.WebHost.UseUrls("http://localhost:5242");
-
-            // ✅ Services
             builder.Services.AddControllers();
 
             builder.Services.AddDbContext<AccountDbContext>(options =>
@@ -29,32 +25,31 @@ namespace SmartBank.AccountService
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
             builder.Services.AddScoped<IAccountService,
-                SmartBank.AccountService.Services.AccountService>();
-
-            builder.Services.AddScoped<IRabbitMQPublisher, RabbitMQPublisher>();
+            SmartBank.AccountService.Services.AccountService>();
+            builder.Services.AddScoped<
+            IRabbitMQPublisher,
+            RabbitMQPublisher>();
 
             builder.Services.AddHostedService<CustomerCreatedConsumer>();
 
             var app = builder.Build();
 
-            // ✅ ✅ ALWAYS ENABLE SWAGGER
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
+            if (app.Environment.IsDevelopment())
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Account Service API");
-            });
+                app.UseSwagger();
 
-            // ✅ Global exception middleware
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint(
+                        "/swagger/v1/swagger.json",
+                        "SmartBank Account Service v1");
+                });
+            }
             app.UseMiddleware<ExceptionMiddleware>();
 
-            // ❌ REMOVE HTTPS
-            // app.UseHttpsRedirection();
-
-            // ✅ Test endpoint
-            app.MapGet("/", () => "Account Service Running ✅");
+            app.UseHttpsRedirection();
 
             app.UseAuthorization();
 

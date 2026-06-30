@@ -1,0 +1,51 @@
+2026-06-29 20:07:48.322 +05:30 [INF] Executed DbCommand (45ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-29 20:07:48.451 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-06-29 20:07:48.543 +05:30 [INF] Executed DbCommand (85ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-06-29 20:07:48.691 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-06-29 20:07:48.738 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-29 20:07:48.750 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-06-29 20:07:49.989 +05:30 [INF] Executed DbCommand (1,229ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-06-29 20:07:50.072 +05:30 [INF] No migrations were applied. The database is already up to date.
+2026-06-29 20:07:50.164 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-06-29 20:08:08.893 +05:30 [INF] Now listening on: http://localhost:5098
+2026-06-29 20:08:08.978 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-29 20:08:08.990 +05:30 [INF] Hosting environment: Development
+2026-06-29 20:08:09.006 +05:30 [INF] Content root path: C:\Users\NANDINI M\Desktop\dotnetproject\Smart-Bank-App\SmartBankApp_MS\SmartBank.CustomerServie
+2026-06-29 20:08:27.269 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5098/swagger - null null
+2026-06-29 20:08:27.611 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5098/swagger - 301 0 null 350.7234ms
+2026-06-29 20:08:27.640 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5098/swagger/index.html - null null
+2026-06-29 20:08:27.845 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5098/swagger/index.html - 200 null text/html;charset=utf-8 202.4763ms
+2026-06-29 20:08:27.906 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5098/swagger/swagger-ui-bundle.js - null null
+2026-06-29 20:08:27.910 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5098/swagger/index.css - null null
+2026-06-29 20:08:27.931 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5098/swagger/index.js - null null
+2026-06-29 20:08:27.931 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5098/swagger/swagger-ui-standalone-preset.js - null null
+2026-06-29 20:08:27.966 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5098/swagger/swagger-ui.css - null null
+2026-06-29 20:08:28.066 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5098/swagger/index.js - 200 null application/javascript;charset=utf-8 134.7754ms
+2026-06-29 20:08:28.145 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5098/swagger/index.css - 200 152 text/css 235.5905ms
+2026-06-29 20:08:28.254 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5098/swagger/swagger-ui.css - 200 23649 text/css 287.6391ms
+2026-06-29 20:08:28.366 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5098/swagger/swagger-ui-bundle.js - 200 424834 text/javascript 460.6469ms
+2026-06-29 20:08:28.366 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5098/swagger/swagger-ui-standalone-preset.js - 200 77354 text/javascript 435.1663ms
+2026-06-29 20:08:28.871 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5098/swagger/v1/swagger.json - null null
+2026-06-29 20:08:28.916 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5098/swagger/favicon-32x32.png - null null
+2026-06-29 20:08:28.986 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5098/swagger/favicon-32x32.png - 200 628 image/png 71.8347ms
+2026-06-29 20:08:29.493 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5098/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 621.9671ms

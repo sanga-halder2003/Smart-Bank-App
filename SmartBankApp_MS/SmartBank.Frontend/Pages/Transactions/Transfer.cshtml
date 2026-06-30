@@ -1,0 +1,41 @@
+@page
+@model SmartBank.Frontend.Pages.Transactions.TransferModel
+
+<h2>Transfer Money</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+
+        <label>From Account</label>
+
+        <input asp-for="Transfer.FromAccountId"
+               class="form-control"/>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>To Account</label>
+
+        <input asp-for="Transfer.ToAccountId"
+               class="form-control"/>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Amount</label>
+
+        <input asp-for="Transfer.Amount"
+               class="form-control"/>
+
+    </div>
+
+    <button class="btn btn-primary">
+
+        Transfer
+
+    </button>
+
+</form>

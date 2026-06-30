@@ -1,0 +1,35 @@
+@page
+@model SmartBank.Frontend.Pages.Accounts.CreateModel
+
+<h2>Open New Account</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label>Customer Id</label>
+        <input asp-for="Account.CustomerId"
+               class="form-control"/>
+    </div>
+
+    <div class="mb-3">
+
+        <label>Account Type</label>
+
+        <select asp-for="Account.AccountType"
+                class="form-select">
+
+            <option>Savings</option>
+
+            <option>Current</option>
+
+        </select>
+
+    </div>
+
+    <button class="btn btn-primary">
+
+        Create Account
+
+    </button>
+
+</form>

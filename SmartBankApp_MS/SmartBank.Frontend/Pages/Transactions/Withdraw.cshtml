@@ -1,0 +1,29 @@
+@page
+@model SmartBank.Frontend.Pages.Transactions.WithdrawModel
+
+<h2>Withdraw Money</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label>Account Id</label>
+        <input asp-for="Withdraw.AccountId"
+               class="form-control"/>
+    </div>
+
+    <div class="mb-3">
+
+        <label>Amount</label>
+
+        <input asp-for="Withdraw.Amount"
+               class="form-control"/>
+
+    </div>
+
+    <button class="btn btn-warning">
+
+        Withdraw
+
+    </button>
+
+</form>

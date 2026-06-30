@@ -1,6 +1,7 @@
 using SmartBank.AccountService.DTOs;
 using SmartBank.AccountService.Interfaces;
 using SmartBank.AccountService.Models;
+using SmartBank.AccountService.Messaging;
 
 namespace SmartBank.AccountService.Services
 {
@@ -8,13 +9,16 @@ namespace SmartBank.AccountService.Services
     {
         private readonly IAccountRepository _repository;
         private readonly ILogger<AccountService> _logger;
+        private readonly IRabbitMQPublisher _publisher;
 
         public AccountService(
             IAccountRepository repository,
-            ILogger<AccountService> logger)
+            ILogger<AccountService> logger,
+            IRabbitMQPublisher publisher)
         {
             _repository = repository;
             _logger = logger;
+            _publisher = publisher;
         }
 
         public async Task<IEnumerable<AccountResponseDto>> GetAllAccountsAsync()
@@ -101,8 +105,19 @@ namespace SmartBank.AccountService.Services
 
             await _repository.SaveAsync();
 
+            // Publish RabbitMQ Event
+            var accountEvent = new AccountCreatedEvent
+            {
+                CustomerId = account.CustomerId,
+                AccountNumber = account.AccountNumber,
+                AccountType = account.AccountType
+            };
+
+            await _publisher.PublishAccountCreatedEventAsync(
+                accountEvent);
+
             _logger.LogInformation(
-                "Account created successfully for CustomerId {CustomerId}",
+                "Account created successfully and event published for CustomerId {CustomerId}",
                 dto.CustomerId);
         }
 
@@ -124,6 +139,7 @@ namespace SmartBank.AccountService.Services
             }
 
             account.IsActive = false;
+            account.ClosedDate = DateTime.UtcNow;
 
             await _repository.UpdateAsync(account);
 

@@ -1,0 +1,42 @@
+body{
+    background:#eef3f9;
+}
+
+.card{
+    border:none;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.navbar{
+    background:#003366!important;
+}
+
+.btn-primary{
+    background:#0056b3;
+}
+
+.btn-success{
+    background:#0f9d58;
+}
+
+.btn-warning{
+    color:white;
+}
+
+.table{
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.dashboard-card{
+    transition:.3s;
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+
+}

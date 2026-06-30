@@ -1,0 +1,134 @@
+2026-06-30 13:11:27.992 +05:30 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-06-30 13:11:28.089 +05:30 [INF] Now listening on: https://localhost:7258
+2026-06-30 13:11:28.093 +05:30 [INF] Now listening on: http://localhost:5098
+2026-06-30 13:11:28.096 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-30 13:11:28.099 +05:30 [INF] Hosting environment: Development
+2026-06-30 13:11:28.102 +05:30 [INF] Content root path: C:\Users\Sai Priya\Smart-Bank-App\SmartBankApp_MS\SmartBank.CustomerServie
+2026-06-30 13:11:43.642 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/ - null null
+2026-06-30 13:11:43.706 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/ - 404 0 null 66.8234ms
+2026-06-30 13:11:43.724 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7258/, Response status code: 404
+2026-06-30 13:11:43.767 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/favicon.ico - null null
+2026-06-30 13:11:43.774 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/favicon.ico - 404 0 null 6.5763ms
+2026-06-30 13:11:43.785 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7258/favicon.ico, Response status code: 404
+2026-06-30 13:11:50.337 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger - null null
+2026-06-30 13:11:50.349 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger - 301 0 null 11.4949ms
+2026-06-30 13:11:50.355 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/index.html - null null
+2026-06-30 13:11:50.443 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/index.html - 200 null text/html;charset=utf-8 87.4135ms
+2026-06-30 13:11:50.469 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/swagger-ui.css - null null
+2026-06-30 13:11:50.469 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/index.css - null null
+2026-06-30 13:11:50.469 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/swagger-ui-bundle.js - null null
+2026-06-30 13:11:50.470 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/index.js - null null
+2026-06-30 13:11:50.470 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/swagger-ui-standalone-preset.js - null null
+2026-06-30 13:11:50.486 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/index.js - 200 null application/javascript;charset=utf-8 15.9245ms
+2026-06-30 13:11:50.512 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/index.css - 200 152 text/css 43.4291ms
+2026-06-30 13:11:50.532 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/swagger-ui-standalone-preset.js - 200 77354 text/javascript 62.0548ms
+2026-06-30 13:11:50.532 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/swagger-ui.css - 200 23649 text/css 63.6339ms
+2026-06-30 13:11:50.536 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/swagger-ui-bundle.js - 200 424834 text/javascript 66.6768ms
+2026-06-30 13:11:51.043 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/favicon-16x16.png - null null
+2026-06-30 13:11:51.048 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/favicon-16x16.png - 200 665 image/png 4.703ms
+2026-06-30 13:11:51.065 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/v1/swagger.json - null null
+2026-06-30 13:11:51.211 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/v1/swagger.json - 200 null application/json;charset=utf-8 146.1184ms
+2026-06-30 13:15:35.221 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5098/ - null null
+2026-06-30 13:15:35.242 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5098/ - 307 0 null 21.4603ms
+2026-06-30 13:15:35.260 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/ - null null
+2026-06-30 13:15:35.264 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/ - 404 0 null 3.906ms
+2026-06-30 13:15:35.269 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7258/, Response status code: 404
+2026-06-30 13:15:35.359 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/favicon.ico - null null
+2026-06-30 13:15:35.363 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/favicon.ico - 404 0 null 4.0369ms
+2026-06-30 13:15:35.366 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7258/favicon.ico, Response status code: 404
+2026-06-30 13:24:04.429 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/ - null null
+2026-06-30 13:24:04.442 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/ - 404 0 null 11.3591ms
+2026-06-30 13:24:04.449 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7258/, Response status code: 404
+2026-06-30 13:24:04.552 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/favicon.ico - null null
+2026-06-30 13:24:04.561 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/favicon.ico - 404 0 null 9.8103ms
+2026-06-30 13:24:04.572 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7258/favicon.ico, Response status code: 404
+2026-06-30 13:24:11.546 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger - null null
+2026-06-30 13:24:11.556 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger - 301 0 null 10.1375ms
+2026-06-30 13:24:11.564 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/index.html - null null
+2026-06-30 13:24:11.578 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/index.html - 200 null text/html;charset=utf-8 14.8313ms
+2026-06-30 13:24:11.623 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/swagger-ui-bundle.js - null null
+2026-06-30 13:24:11.623 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/index.css - null null
+2026-06-30 13:24:11.623 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/swagger-ui.css - null null
+2026-06-30 13:24:11.625 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/index.js - null null
+2026-06-30 13:24:11.626 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/swagger-ui-standalone-preset.js - null null
+2026-06-30 13:24:11.638 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/index.css - 200 152 text/css 15.282ms
+2026-06-30 13:24:11.646 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/swagger-ui-bundle.js - 200 424834 text/javascript 22.6273ms
+2026-06-30 13:24:11.660 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/swagger-ui.css - 200 23649 text/css 37.7657ms
+2026-06-30 13:24:11.665 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/index.js - 200 null application/javascript;charset=utf-8 39.9011ms
+2026-06-30 13:24:11.689 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/swagger-ui-standalone-preset.js - 200 77354 text/javascript 62.959ms
+2026-06-30 13:24:12.414 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/favicon-16x16.png - null null
+2026-06-30 13:24:12.429 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/favicon-16x16.png - 200 665 image/png 15.2978ms
+2026-06-30 13:24:12.447 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/v1/swagger.json - null null
+2026-06-30 13:24:12.493 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/v1/swagger.json - 200 null application/json;charset=utf-8 46.1046ms
+2026-06-30 13:26:39.862 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/index.html - null null
+2026-06-30 13:26:39.875 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/index.html - 200 null text/html;charset=utf-8 13.1973ms
+2026-06-30 13:26:39.892 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/index.css - null null
+2026-06-30 13:26:39.892 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/swagger-ui.css - null null
+2026-06-30 13:26:39.894 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/swagger-ui-bundle.js - null null
+2026-06-30 13:26:39.896 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/swagger-ui-standalone-preset.js - null null
+2026-06-30 13:26:39.898 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/index.js - null null
+2026-06-30 13:26:39.906 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/index.css - 200 152 text/css 13.6775ms
+2026-06-30 13:26:39.917 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/swagger-ui.css - 200 23649 text/css 24.7172ms
+2026-06-30 13:26:39.939 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/swagger-ui-bundle.js - 200 424834 text/javascript 45.4686ms
+2026-06-30 13:26:39.948 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/swagger-ui-standalone-preset.js - 200 77354 text/javascript 51.6543ms
+2026-06-30 13:26:39.960 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/index.js - 200 null application/javascript;charset=utf-8 62.0204ms
+2026-06-30 13:26:40.205 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/v1/swagger.json - null null
+2026-06-30 13:26:40.225 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.9523ms
+2026-06-30 13:26:40.238 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7258/Swagger/favicon-32x32.png - null null
+2026-06-30 13:26:40.243 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7258/Swagger/favicon-32x32.png - 200 628 image/png 4.1918ms
+2026-06-30 16:02:14.517 +05:30 [INF] Now listening on: https://localhost:7258
+2026-06-30 16:02:14.579 +05:30 [INF] Now listening on: http://localhost:5098
+2026-06-30 16:02:14.583 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-30 16:02:14.585 +05:30 [INF] Hosting environment: Development
+2026-06-30 16:02:14.587 +05:30 [INF] Content root path: C:\Users\Sai Priya\Smart-Bank-App\SmartBankApp_MS\SmartBank.CustomerServie
+2026-06-30 16:09:42.060 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7258/api/Customer - null null
+2026-06-30 16:09:42.219 +05:30 [INF] Executing endpoint 'SmartBank.CustomerServie.Controllers.CustomerController.GetAllCustomers (SmartBank.CustomerService)'
+2026-06-30 16:09:42.283 +05:30 [INF] Route matched with {action = "GetAllCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCustomers() on controller SmartBank.CustomerServie.Controllers.CustomerController (SmartBank.CustomerService).
+2026-06-30 16:09:45.311 +05:30 [INF] Executed DbCommand (153ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Address], [c].[Email], [c].[FullName], [c].[Phone]
+FROM [Customers] AS [c]
+2026-06-30 16:09:45.530 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SmartBank.CustomerServie.Models.Customer, SmartBank.CustomerService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-30 16:09:45.579 +05:30 [INF] Executed action SmartBank.CustomerServie.Controllers.CustomerController.GetAllCustomers (SmartBank.CustomerService) in 3281.2451ms
+2026-06-30 16:09:45.584 +05:30 [INF] Executed endpoint 'SmartBank.CustomerServie.Controllers.CustomerController.GetAllCustomers (SmartBank.CustomerService)'
+2026-06-30 16:09:45.624 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7258/api/Customer - 200 null application/json; charset=utf-8 3569.6527ms
+2026-06-30 16:10:21.283 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7258/api/Customer - null null
+2026-06-30 16:10:21.293 +05:30 [INF] Executing endpoint 'SmartBank.CustomerServie.Controllers.CustomerController.GetAllCustomers (SmartBank.CustomerService)'
+2026-06-30 16:10:21.295 +05:30 [INF] Route matched with {action = "GetAllCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCustomers() on controller SmartBank.CustomerServie.Controllers.CustomerController (SmartBank.CustomerService).
+2026-06-30 16:10:21.381 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Address], [c].[Email], [c].[FullName], [c].[Phone]
+FROM [Customers] AS [c]
+2026-06-30 16:10:21.387 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SmartBank.CustomerServie.Models.Customer, SmartBank.CustomerService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-30 16:10:21.391 +05:30 [INF] Executed action SmartBank.CustomerServie.Controllers.CustomerController.GetAllCustomers (SmartBank.CustomerService) in 93.5284ms
+2026-06-30 16:10:21.393 +05:30 [INF] Executed endpoint 'SmartBank.CustomerServie.Controllers.CustomerController.GetAllCustomers (SmartBank.CustomerService)'
+2026-06-30 16:10:21.397 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7258/api/Customer - 200 null application/json; charset=utf-8 113.9043ms
+2026-06-30 16:10:28.443 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7258/api/Customer - null null
+2026-06-30 16:10:28.453 +05:30 [INF] Executing endpoint 'SmartBank.CustomerServie.Controllers.CustomerController.GetAllCustomers (SmartBank.CustomerService)'
+2026-06-30 16:10:28.458 +05:30 [INF] Route matched with {action = "GetAllCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCustomers() on controller SmartBank.CustomerServie.Controllers.CustomerController (SmartBank.CustomerService).
+2026-06-30 16:10:28.648 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Address], [c].[Email], [c].[FullName], [c].[Phone]
+FROM [Customers] AS [c]
+2026-06-30 16:10:28.653 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SmartBank.CustomerServie.Models.Customer, SmartBank.CustomerService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-30 16:10:28.657 +05:30 [INF] Executed action SmartBank.CustomerServie.Controllers.CustomerController.GetAllCustomers (SmartBank.CustomerService) in 195.2767ms
+2026-06-30 16:10:28.667 +05:30 [INF] Executed endpoint 'SmartBank.CustomerServie.Controllers.CustomerController.GetAllCustomers (SmartBank.CustomerService)'
+2026-06-30 16:10:28.670 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7258/api/Customer - 200 null application/json; charset=utf-8 227.2784ms
+2026-06-30 16:10:33.583 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7258/api/Customer/2 - null null
+2026-06-30 16:10:33.587 +05:30 [INF] Executing endpoint 'SmartBank.CustomerServie.Controllers.CustomerController.GetCustomerById (SmartBank.CustomerService)'
+2026-06-30 16:10:33.634 +05:30 [INF] Route matched with {action = "GetCustomerById", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerById(Int32) on controller SmartBank.CustomerServie.Controllers.CustomerController (SmartBank.CustomerService).
+2026-06-30 16:10:34.032 +05:30 [INF] Executed DbCommand (61ms) [Parameters=[@p='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Address], [c].[Email], [c].[FullName], [c].[Phone]
+FROM [Customers] AS [c]
+WHERE [c].[Id] = @p
+2026-06-30 16:10:34.037 +05:30 [INF] Executing OkObjectResult, writing value of type 'SmartBank.CustomerServie.Models.Customer'.
+2026-06-30 16:10:34.039 +05:30 [INF] Executed action SmartBank.CustomerServie.Controllers.CustomerController.GetCustomerById (SmartBank.CustomerService) in 402.5495ms
+2026-06-30 16:10:34.041 +05:30 [INF] Executed endpoint 'SmartBank.CustomerServie.Controllers.CustomerController.GetCustomerById (SmartBank.CustomerService)'
+2026-06-30 16:10:34.043 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7258/api/Customer/2 - 200 null application/json; charset=utf-8 460.5542ms
+2026-06-30 16:55:12.753 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7258/api/Customer - null null
+2026-06-30 16:55:12.787 +05:30 [INF] Executing endpoint 'SmartBank.CustomerServie.Controllers.CustomerController.GetAllCustomers (SmartBank.CustomerService)'
+2026-06-30 16:55:12.798 +05:30 [INF] Route matched with {action = "GetAllCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCustomers() on controller SmartBank.CustomerServie.Controllers.CustomerController (SmartBank.CustomerService).
+2026-06-30 16:55:14.547 +05:30 [INF] Executed DbCommand (76ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Address], [c].[Email], [c].[FullName], [c].[Phone]
+FROM [Customers] AS [c]
+2026-06-30 16:55:14.562 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SmartBank.CustomerServie.Models.Customer, SmartBank.CustomerService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-30 16:55:14.569 +05:30 [INF] Executed action SmartBank.CustomerServie.Controllers.CustomerController.GetAllCustomers (SmartBank.CustomerService) in 1764.9414ms
+2026-06-30 16:55:14.573 +05:30 [INF] Executed endpoint 'SmartBank.CustomerServie.Controllers.CustomerController.GetAllCustomers (SmartBank.CustomerService)'
+2026-06-30 16:55:14.577 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7258/api/Customer - 200 null application/json; charset=utf-8 1827.2443ms

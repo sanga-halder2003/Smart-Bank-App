@@ -1,4 +1,5 @@
 ﻿using SmartBank.AuthService.DTOs;
+using SmartBank.AuthService.Messaging;
 using SmartBank.AuthService.Models;
 using SmartBank.AuthService.Repositories;
 
@@ -8,14 +9,26 @@ namespace SmartBank.AuthService.Services
     {
         private readonly IAuthRepository _authRepository;
         private readonly IJwtService _jwtService;
-        public AuthService(IAuthRepository authRepository, IJwtService jwtService)
+        private readonly IRabbitMQPublisher _rabbitMQPublisher;
+        private readonly ILogger<AuthService> _logger;
+        public AuthService(IAuthRepository authRepository, IJwtService jwtService, IRabbitMQPublisher rabbitMQPublisher, ILogger<AuthService> logger)
         {
             _authRepository = authRepository;
             _jwtService = jwtService;
+            _rabbitMQPublisher = rabbitMQPublisher;
+            _logger = logger;
+
         }
 
         public async Task<string> RegisterAsync(RegisterRequestDto request)
         {
+            var allowedRoles = new[] { "Admin", "Manager", "Customer" };
+
+            if (!allowedRoles.Contains(request.RoleName))
+            {
+                return "Invalid role. Allowed roles are Admin, Manager, Customer";
+            }
+
             var existingUser = await _authRepository.GetUserByEmailAsync(request.Email);
 
             if (existingUser != null)
@@ -46,6 +59,15 @@ namespace SmartBank.AuthService.Services
 
             await _authRepository.AddUserAsync(user);
             await _authRepository.SaveChangesAsync();
+
+            var userEvent = new UserRegisteredEvent
+            {
+                FullName = user.FullName,
+                Email = user.Email,
+                RoleName = role.RoleName
+            };
+
+            await _rabbitMQPublisher.PublishUserRegisteredEventAsync(userEvent);
 
             return "User registered successfully";
         }

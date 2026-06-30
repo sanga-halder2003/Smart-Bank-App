@@ -10,9 +10,9 @@ namespace SmartBank.TransactionService.Data
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 
             // ✅ DIRECT CONNECTION STRING (NO appsettings)
-            optionsBuilder.UseSqlServer(
-                "Server=localhost\\SQLEXPRESS;Database=TransactionDB;Trusted_Connection=True;TrustServerCertificate=True;"
-            );
+           optionsBuilder.UseSqlServer(
+    "Server=localhost\\SQLEXPRESS;Database=TransactionDB;Trusted_Connection=True;TrustServerCertificate=True;"
+);
 
             return new AppDbContext(optionsBuilder.Options);
         }

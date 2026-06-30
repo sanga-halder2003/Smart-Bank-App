@@ -1,0 +1,71 @@
+@page
+@model SmartBank.Frontend.Pages.Customers.IndexModel
+
+<h2>Customers</h2>
+
+<p>
+    <a asp-page="Create" class="btn btn-success">
+        Add Customer
+    </a>
+</p>
+
+<table class="table table-bordered table-striped">
+
+    <thead>
+
+        <tr>
+
+            <th>Id</th>
+
+            <th>Name</th>
+
+            <th>Email</th>
+
+            <th>Phone</th>
+
+            <th>Address</th>
+
+            <th>Actions</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+@foreach(var customer in Model.Customers)
+{
+    <tr>
+
+        <td>@customer.Id</td>
+
+        <td>@customer.FullName</td>
+
+        <td>@customer.Email</td>
+
+        <td>@customer.Phone</td>
+
+        <td>@customer.Address</td>
+
+        <td>
+
+            <a asp-page="Edit"
+               asp-route-id="@customer.Id"
+               class="btn btn-warning btn-sm">
+                Edit
+            </a>
+
+            <a asp-page="Delete"
+               asp-route-id="@customer.Id"
+               class="btn btn-danger btn-sm">
+                Delete
+            </a>
+
+        </td>
+
+    </tr>
+}
+
+    </tbody>
+
+</table>

@@ -2,7 +2,7 @@ namespace SmartBank.TransactionService.DTOs
 {
     public class DepositDto
     {
-        public int AccountId { get; set; }
+        public string AccountId { get; set; } = string.Empty;
         public decimal Amount { get; set; }
     }
 }

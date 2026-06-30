@@ -1,0 +1,103 @@
+@page
+@model SmartBank.Frontend.Pages.Dashboard.DashboardModel
+
+<div class="container mt-4">
+
+    <h2 class="fw-bold">
+
+        Welcome to Smart Bank
+
+    </h2>
+
+    <p class="text-secondary">
+
+        Banking Management Dashboard
+
+    </p>
+
+    <div class="row mt-4">
+
+        <div class="col-md-4">
+
+            <div class="card dashboard-card">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-people-fill display-4 text-primary"></i>
+
+                    <h4 class="mt-3">
+
+                        Customers
+
+                    </h4>
+
+                    <a asp-page="/Customers/Index"
+                       class="btn btn-primary">
+
+                        Manage
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card dashboard-card">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-credit-card display-4 text-success"></i>
+
+                    <h4 class="mt-3">
+
+                        Accounts
+
+                    </h4>
+
+                    <a asp-page="/Accounts/Index"
+                       class="btn btn-success">
+
+                        Manage
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card dashboard-card">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-arrow-left-right display-4 text-warning"></i>
+
+                    <h4 class="mt-3">
+
+                        Transactions
+
+                    </h4>
+
+                    <a asp-page="/Transactions/Statement"
+                       class="btn btn-warning">
+
+                        Manage
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -4,9 +4,9 @@ namespace SmartBank.TransactionService.Models
     {
         public int Id { get; set; }
 
-        public int AccountId { get; set; }
+        public string AccountId { get; set; } = string.Empty;
 
-        public int? DestinationAccountId { get; set; }
+        public string? DestinationAccountId { get; set; }
 
         public decimal Amount { get; set; }
 

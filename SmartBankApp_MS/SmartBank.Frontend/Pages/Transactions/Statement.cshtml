@@ -1,0 +1,71 @@
+@page "{accountId:int?}"
+@model SmartBank.Frontend.Pages.Transactions.StatementModel
+
+<h2>Transaction Statement</h2>
+
+<form method="get">
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <input asp-for="AccountId"
+                   class="form-control"
+                   placeholder="Enter Account Id"/>
+
+        </div>
+
+        <div class="col-md-2">
+
+            <button class="btn btn-success">
+
+                Search
+
+            </button>
+
+        </div>
+
+    </div>
+
+</form>
+
+<hr/>
+
+<table class="table table-bordered">
+
+    <thead>
+
+        <tr>
+
+            <th>Id</th>
+
+            <th>Type</th>
+
+            <th>Amount</th>
+
+            <th>Date</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+@foreach(var t in Model.Transactions)
+{
+    <tr>
+
+        <td>@t.Id</td>
+
+        <td>@t.Type</td>
+
+        <td>@t.Amount</td>
+
+        <td>@t.CreatedAt</td>
+
+    </tr>
+}
+
+    </tbody>
+
+</table>

@@ -3,7 +3,7 @@
     {
       "UpstreamPathTemplate": "/api/auth/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
-      "DownstreamPathTemplate": "/api/auth/{everything}",
+      "DownstreamPathTemplate": "/api/Auth/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -12,11 +12,10 @@
         }
       ]
     },
-
     {
       "UpstreamPathTemplate": "/api/customer/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
-      "DownstreamPathTemplate": "/api/customers/{everything}",
+      "DownstreamPathTemplate": "/api/Customer/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -25,11 +24,10 @@
         }
       ]
     },
-
     {
       "UpstreamPathTemplate": "/api/account/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
-      "DownstreamPathTemplate": "/api/account/{everything}",
+      "DownstreamPathTemplate": "/api/Accounts/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -38,11 +36,10 @@
         }
       ]
     },
-
     {
       "UpstreamPathTemplate": "/api/transaction/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
-      "DownstreamPathTemplate": "/api/transactions/{everything}",
+      "DownstreamPathTemplate": "/api/Transaction/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -51,11 +48,10 @@
         }
       ]
     },
-
     {
       "UpstreamPathTemplate": "/api/notification/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
-      "DownstreamPathTemplate": "/api/notifications/{everything}",
+      "DownstreamPathTemplate": "/api/Notifications/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -65,7 +61,6 @@
       ]
     }
   ],
-
   "GlobalConfiguration": {
     "BaseUrl": "https://localhost:7244"
   }

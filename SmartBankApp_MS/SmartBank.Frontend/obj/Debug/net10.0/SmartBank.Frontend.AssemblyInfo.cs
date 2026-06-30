@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartBank.Frontend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9dc584c5f0e7adbcf82ca781f4522cceb93e916")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8079d63597a852e58a3200ed9dda731f4bab8ed1")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartBank.Frontend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartBank.Frontend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

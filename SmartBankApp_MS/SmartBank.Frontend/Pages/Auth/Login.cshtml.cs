@@ -15,21 +15,17 @@ namespace SmartBank.Frontend.Pages.Auth
         }
 
         [BindProperty]
-        public LoginRequest LoginRequest { get; set; }
-            = new();
+        public LoginRequest LoginRequest { get; set; } = new();
 
-        public string Message { get; set; } = "";
+        public string Message { get; set; } = string.Empty;
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var response =
-                await _authService.LoginAsync(LoginRequest);
+            var response = await _authService.LoginAsync(LoginRequest);
 
             if (response.IsSuccessStatusCode)
             {
-                Message = "Login Successful";
-
-                return RedirectToPage("/Index");
+                return RedirectToPage("/Dashboard/Dashboard");
             }
 
             Message = "Invalid Email or Password";

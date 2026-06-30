@@ -2,7 +2,7 @@ namespace SmartBank.TransactionService.Messaging
 {
     public class MoneyWithdrawnEvent
     {
-        public int AccountId { get; set; }
+        public string AccountId { get; set; } = string.Empty;
         public decimal Amount { get; set; }
         public DateTime CreatedAt { get; set; }
     }

@@ -18,7 +18,7 @@ namespace SmartBank.TransactionService.Services
         }
 
         // ✅ Calculate Balance
-        private async Task<decimal> GetBalance(int accountId)
+        private async Task<decimal> GetBalance(string accountId)
         {
             var transactions = await _context.Transactions
                 .Where(t => t.AccountId == accountId)
@@ -57,7 +57,6 @@ namespace SmartBank.TransactionService.Services
 
             await _context.SaveChangesAsync();
 
-            // ✅ Publish Event
             var eventMessage = new MoneyDepositedEvent
             {
                 AccountId = dto.AccountId,
@@ -89,7 +88,6 @@ namespace SmartBank.TransactionService.Services
 
             await _context.SaveChangesAsync();
 
-            // ✅ Publish Event
             var eventMessage = new MoneyWithdrawnEvent
             {
                 AccountId = dto.AccountId,
@@ -114,7 +112,7 @@ namespace SmartBank.TransactionService.Services
             if (balance < dto.Amount)
                 throw new Exception("Insufficient balance");
 
-            if (dto.ToAccountId <= 0)
+            if (string.IsNullOrWhiteSpace(dto.ToAccountId))
                 throw new Exception("Invalid destination account");
 
             _context.Transactions.Add(new Transaction
@@ -128,7 +126,6 @@ namespace SmartBank.TransactionService.Services
 
             await _context.SaveChangesAsync();
 
-            // ✅ Publish Event
             var eventMessage = new MoneyTransferredEvent
             {
                 FromAccountId = dto.FromAccountId,
@@ -141,7 +138,7 @@ namespace SmartBank.TransactionService.Services
         }
 
         // ✅ STATEMENT
-        public async Task<List<Transaction>> GetStatement(int accountId)
+        public async Task<List<Transaction>> GetStatement(string accountId)
         {
             return await _context.Transactions
                 .Where(t => t.AccountId == accountId || t.DestinationAccountId == accountId)

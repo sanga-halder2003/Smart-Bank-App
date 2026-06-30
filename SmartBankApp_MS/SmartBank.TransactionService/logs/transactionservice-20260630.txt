@@ -1,0 +1,285 @@
+2026-06-30 20:11:46.489 +05:30 [INF] Now listening on: http://localhost:5243
+2026-06-30 20:11:46.542 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-30 20:11:46.544 +05:30 [INF] Hosting environment: Development
+2026-06-30 20:11:46.546 +05:30 [INF] Content root path: C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService
+2026-06-30 20:11:50.516 +05:30 [ERR] BackgroundService failed
+RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
+ ---> System.AggregateException: One or more errors occurred. (Connection failed)
+ ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at RabbitMQ.Client.TcpClientAdapter.ConnectAsync(String host, Int32 port)
+   at RabbitMQ.Client.Impl.TaskExtensions.TimeoutAfter(Task task, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingAddressFamily(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout, AddressFamily family)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingIPv4(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler..ctor(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.Framing.Impl.IProtocolExtensions.CreateFrameHandler(IProtocol protocol, AmqpTcpEndpoint endpoint, ArrayPool`1 pool, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.ConnectionFactory.CreateFrameHandler(AmqpTcpEndpoint endpoint)
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   at RabbitMQ.Client.Framing.Impl.AutorecoveringConnection.Init(IEndpointResolver endpoints)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection()
+   at SmartBank.TransactionService.Messaging.AccountCreatedConsumer.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService\Messaging\AccountCreatedConsumer.cs:line 17
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2026-06-30 20:11:50.568 +05:30 [FTL] The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
+ ---> System.AggregateException: One or more errors occurred. (Connection failed)
+ ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at RabbitMQ.Client.TcpClientAdapter.ConnectAsync(String host, Int32 port)
+   at RabbitMQ.Client.Impl.TaskExtensions.TimeoutAfter(Task task, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingAddressFamily(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout, AddressFamily family)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingIPv4(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler..ctor(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.Framing.Impl.IProtocolExtensions.CreateFrameHandler(IProtocol protocol, AmqpTcpEndpoint endpoint, ArrayPool`1 pool, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.ConnectionFactory.CreateFrameHandler(AmqpTcpEndpoint endpoint)
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   at RabbitMQ.Client.Framing.Impl.AutorecoveringConnection.Init(IEndpointResolver endpoints)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection()
+   at SmartBank.TransactionService.Messaging.AccountCreatedConsumer.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService\Messaging\AccountCreatedConsumer.cs:line 17
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2026-06-30 20:11:50.582 +05:30 [INF] Application is shutting down...
+2026-06-30 20:25:04.115 +05:30 [INF] Now listening on: http://localhost:5243
+2026-06-30 20:25:04.163 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-30 20:25:04.165 +05:30 [INF] Hosting environment: Development
+2026-06-30 20:25:04.166 +05:30 [INF] Content root path: C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService
+2026-06-30 20:25:16.331 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5243/swagger - null null
+2026-06-30 20:25:16.447 +05:30 [INF] HTTP GET /swagger responded 301 in 67.3928 ms
+2026-06-30 20:25:16.498 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5243/swagger - 301 0 null 167.6785ms
+2026-06-30 20:25:16.527 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5243/swagger/index.html - null null
+2026-06-30 20:25:16.683 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 151.1098 ms
+2026-06-30 20:25:16.685 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5243/swagger/index.html - 200 null text/html;charset=utf-8 158.6254ms
+2026-06-30 20:25:16.766 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5243/swagger/swagger-ui.css - null null
+2026-06-30 20:25:16.766 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5243/swagger/index.css - null null
+2026-06-30 20:25:16.767 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5243/swagger/swagger-ui-bundle.js - null null
+2026-06-30 20:25:16.769 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5243/swagger/index.js - null null
+2026-06-30 20:25:16.770 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5243/swagger/swagger-ui-standalone-preset.js - null null
+2026-06-30 20:25:16.809 +05:30 [INF] HTTP GET /swagger/index.css responded 200 in 26.9447 ms
+2026-06-30 20:25:16.810 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 31.9698 ms
+2026-06-30 20:25:16.848 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5243/swagger/swagger-ui.css - 200 23649 text/css 81.8624ms
+2026-06-30 20:25:16.842 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5243/swagger/index.css - 200 152 text/css 76.2607ms
+2026-06-30 20:25:16.817 +05:30 [INF] HTTP GET /swagger/index.js responded 200 in 2.4073 ms
+2026-06-30 20:25:16.878 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 84.1917 ms
+2026-06-30 20:25:16.880 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 63.0110 ms
+2026-06-30 20:25:17.056 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5243/swagger/index.js - 200 null application/javascript;charset=utf-8 287.1982ms
+2026-06-30 20:25:17.091 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5243/swagger/swagger-ui-standalone-preset.js - 200 77354 text/javascript 321.0075ms
+2026-06-30 20:25:17.091 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5243/swagger/swagger-ui-bundle.js - 200 424834 text/javascript 323.7671ms
+2026-06-30 20:25:17.675 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5243/swagger/v1/swagger.json - null null
+2026-06-30 20:25:17.746 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5243/swagger/favicon-32x32.png - null null
+2026-06-30 20:25:17.771 +05:30 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 3.9085 ms
+2026-06-30 20:25:17.791 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5243/swagger/favicon-32x32.png - 200 628 image/png 44.9315ms
+2026-06-30 20:25:17.934 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 254.0305 ms
+2026-06-30 20:25:17.939 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5243/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 263.3787ms
+2026-06-30 21:05:20.071 +05:30 [INF] Application is shutting down...
+2026-06-30 21:11:45.711 +05:30 [INF] Now listening on: http://localhost:5243
+2026-06-30 21:11:45.798 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-30 21:11:45.817 +05:30 [INF] Hosting environment: Development
+2026-06-30 21:11:45.820 +05:30 [INF] Content root path: C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService
+2026-06-30 21:12:48.370 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5243/swagger/index.html - null null
+2026-06-30 21:12:48.674 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 228.8338 ms
+2026-06-30 21:12:48.687 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5243/swagger/index.html - 200 null text/html;charset=utf-8 320.7375ms
+2026-06-30 21:12:48.914 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5243/swagger/v1/swagger.json - null null
+2026-06-30 21:12:49.156 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 235.8118 ms
+2026-06-30 21:12:49.160 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5243/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 245.0743ms
+2026-06-30 21:24:41.857 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5243/swagger/v1/swagger.json - null null
+2026-06-30 21:24:41.936 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 50.4195 ms
+2026-06-30 21:24:41.939 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5243/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 83.7109ms
+2026-06-30 21:24:54.779 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5243/api/Transaction/deposit - application/json 39
+2026-06-30 21:24:54.814 +05:30 [INF] Executing endpoint 'SmartBank.TransactionService.Controllers.TransactionController.Deposit (SmartBank.TransactionService)'
+2026-06-30 21:24:54.858 +05:30 [INF] Route matched with {action = "Deposit", controller = "Transaction"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Deposit(SmartBank.TransactionService.DTOs.DepositDto) on controller SmartBank.TransactionService.Controllers.TransactionController (SmartBank.TransactionService).
+2026-06-30 21:24:55.113 +05:30 [INF] Deposit request received for AccountId 1
+2026-06-30 21:24:55.690 +05:30 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Transaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-30 21:24:56.417 +05:30 [INF] Executed DbCommand (61ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Transactions] ([AccountId], [Amount], [CreatedAt], [DestinationAccountId], [Type])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-06-30 21:24:56.621 +05:30 [INF] Deposit completed successfully for AccountId 1
+2026-06-30 21:24:56.626 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-06-30 21:24:56.633 +05:30 [INF] Executed action SmartBank.TransactionService.Controllers.TransactionController.Deposit (SmartBank.TransactionService) in 1768.0531ms
+2026-06-30 21:24:56.636 +05:30 [INF] Executed endpoint 'SmartBank.TransactionService.Controllers.TransactionController.Deposit (SmartBank.TransactionService)'
+2026-06-30 21:24:56.639 +05:30 [INF] HTTP POST /api/Transaction/deposit responded 200 in 1850.3141 ms
+2026-06-30 21:24:56.650 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5243/api/Transaction/deposit - 200 null text/plain; charset=utf-8 1870.7145ms
+2026-06-30 21:25:11.785 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5243/api/Transaction/withdraw - application/json 39
+2026-06-30 21:25:11.792 +05:30 [INF] Executing endpoint 'SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService)'
+2026-06-30 21:25:11.807 +05:30 [INF] Route matched with {action = "Withdraw", controller = "Transaction"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Withdraw(SmartBank.TransactionService.DTOs.WithdrawDto) on controller SmartBank.TransactionService.Controllers.TransactionController (SmartBank.TransactionService).
+2026-06-30 21:25:11.818 +05:30 [INF] Withdraw request received for AccountId 1
+2026-06-30 21:25:12.283 +05:30 [INF] Executed DbCommand (34ms) [Parameters=[@accountId='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[AccountId], [t].[Amount], [t].[CreatedAt], [t].[DestinationAccountId], [t].[Type]
+FROM [Transactions] AS [t]
+WHERE [t].[AccountId] = @accountId
+2026-06-30 21:25:12.303 +05:30 [INF] Executed action SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService) in 493.8985ms
+2026-06-30 21:25:12.306 +05:30 [INF] Executed endpoint 'SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService)'
+2026-06-30 21:25:12.309 +05:30 [ERR] Unhandled exception occurred.
+System.Exception: Balance cannot be negative
+   at SmartBank.TransactionService.Services.TransactionManager.Withdraw(WithdrawDto dto) in C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService\Services\TransactionManager.cs:line 79
+   at SmartBank.TransactionService.Controllers.TransactionController.Withdraw(WithdrawDto dto) in C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService\Controllers\TransactionController.cs:line 39
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService\Middleware\ExceptionMiddleware.cs:line 21
+2026-06-30 21:25:12.397 +05:30 [ERR] HTTP POST /api/Transaction/withdraw responded 500 in 605.7196 ms
+2026-06-30 21:25:12.400 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5243/api/Transaction/withdraw - 500 null application/json 614.7456ms
+2026-06-30 21:25:22.736 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5243/api/Transaction/withdraw - application/json 39
+2026-06-30 21:25:22.740 +05:30 [INF] Executing endpoint 'SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService)'
+2026-06-30 21:25:22.741 +05:30 [INF] Route matched with {action = "Withdraw", controller = "Transaction"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Withdraw(SmartBank.TransactionService.DTOs.WithdrawDto) on controller SmartBank.TransactionService.Controllers.TransactionController (SmartBank.TransactionService).
+2026-06-30 21:25:22.750 +05:30 [INF] Withdraw request received for AccountId 1
+2026-06-30 21:25:22.781 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@accountId='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[AccountId], [t].[Amount], [t].[CreatedAt], [t].[DestinationAccountId], [t].[Type]
+FROM [Transactions] AS [t]
+WHERE [t].[AccountId] = @accountId
+2026-06-30 21:25:22.796 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Transactions] ([AccountId], [Amount], [CreatedAt], [DestinationAccountId], [Type])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-06-30 21:25:22.859 +05:30 [INF] Withdraw completed successfully for AccountId 1
+2026-06-30 21:25:22.862 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-06-30 21:25:22.864 +05:30 [INF] Executed action SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService) in 120.9686ms
+2026-06-30 21:25:22.866 +05:30 [INF] Executed endpoint 'SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService)'
+2026-06-30 21:25:22.867 +05:30 [INF] HTTP POST /api/Transaction/withdraw responded 200 in 127.7391 ms
+2026-06-30 21:25:22.870 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5243/api/Transaction/withdraw - 200 null text/plain; charset=utf-8 134.1507ms
+2026-06-30 21:26:07.967 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5243/api/Transaction/withdraw - application/json 37
+2026-06-30 21:26:07.972 +05:30 [INF] Executing endpoint 'SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService)'
+2026-06-30 21:26:07.973 +05:30 [INF] Route matched with {action = "Withdraw", controller = "Transaction"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Withdraw(SmartBank.TransactionService.DTOs.WithdrawDto) on controller SmartBank.TransactionService.Controllers.TransactionController (SmartBank.TransactionService).
+2026-06-30 21:26:07.976 +05:30 [INF] Withdraw request received for AccountId 1
+2026-06-30 21:26:07.977 +05:30 [INF] Executed action SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService) in 2.7993ms
+2026-06-30 21:26:07.980 +05:30 [INF] Executed endpoint 'SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService)'
+2026-06-30 21:26:07.982 +05:30 [ERR] Unhandled exception occurred.
+System.Exception: Invalid withdraw amount
+   at SmartBank.TransactionService.Services.TransactionManager.Withdraw(WithdrawDto dto) in C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService\Services\TransactionManager.cs:line 74
+   at SmartBank.TransactionService.Controllers.TransactionController.Withdraw(WithdrawDto dto) in C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService\Controllers\TransactionController.cs:line 39
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService\Middleware\ExceptionMiddleware.cs:line 21
+2026-06-30 21:26:07.993 +05:30 [ERR] HTTP POST /api/Transaction/withdraw responded 500 in 21.1239 ms
+2026-06-30 21:26:08.002 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5243/api/Transaction/withdraw - 500 null application/json 34.9082ms
+2026-06-30 21:30:05.553 +05:30 [INF] Application is shutting down...
+2026-06-30 21:30:32.297 +05:30 [INF] Now listening on: http://localhost:5243
+2026-06-30 21:30:32.347 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-30 21:30:32.348 +05:30 [INF] Hosting environment: Development
+2026-06-30 21:30:32.350 +05:30 [INF] Content root path: C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService
+2026-06-30 21:30:39.583 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5243/swagger/index.html - null null
+2026-06-30 21:30:39.843 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 198.1667 ms
+2026-06-30 21:30:39.856 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5243/swagger/index.html - 200 null text/html;charset=utf-8 275.0739ms
+2026-06-30 21:30:40.457 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5243/swagger/v1/swagger.json - null null
+2026-06-30 21:30:40.719 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 257.4281 ms
+2026-06-30 21:30:40.724 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5243/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 265.5737ms
+2026-06-30 21:30:51.204 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5243/api/Transaction/withdraw - application/json 37
+2026-06-30 21:30:51.228 +05:30 [INF] Executing endpoint 'SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService)'
+2026-06-30 21:30:51.290 +05:30 [INF] Route matched with {action = "Withdraw", controller = "Transaction"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Withdraw(SmartBank.TransactionService.DTOs.WithdrawDto) on controller SmartBank.TransactionService.Controllers.TransactionController (SmartBank.TransactionService).
+2026-06-30 21:30:51.595 +05:30 [INF] Withdraw request received for AccountId 1
+2026-06-30 21:30:51.612 +05:30 [INF] Executed action SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService) in 313.7906ms
+2026-06-30 21:30:51.621 +05:30 [INF] Executed endpoint 'SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService)'
+2026-06-30 21:30:51.623 +05:30 [ERR] Invalid withdraw amount
+System.Exception: Invalid withdraw amount
+   at SmartBank.TransactionService.Services.TransactionManager.Withdraw(WithdrawDto dto) in C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService\Services\TransactionManager.cs:line 74
+   at SmartBank.TransactionService.Controllers.TransactionController.Withdraw(WithdrawDto dto) in C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService\Controllers\TransactionController.cs:line 39
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService\Middleware\ExceptionMiddleware.cs:line 21
+2026-06-30 21:30:51.706 +05:30 [INF] HTTP POST /api/Transaction/withdraw responded 400 in 491.0557 ms
+2026-06-30 21:30:51.716 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5243/api/Transaction/withdraw - 400 null application/json 512.0881ms
+2026-06-30 21:30:58.374 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5243/api/Transaction/withdraw - application/json 39
+2026-06-30 21:30:58.390 +05:30 [INF] Executing endpoint 'SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService)'
+2026-06-30 21:30:58.392 +05:30 [INF] Route matched with {action = "Withdraw", controller = "Transaction"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Withdraw(SmartBank.TransactionService.DTOs.WithdrawDto) on controller SmartBank.TransactionService.Controllers.TransactionController (SmartBank.TransactionService).
+2026-06-30 21:30:58.422 +05:30 [INF] Withdraw request received for AccountId 1
+2026-06-30 21:30:59.224 +05:30 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Transaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-30 21:31:00.609 +05:30 [INF] Executed DbCommand (118ms) [Parameters=[@accountId='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[AccountId], [t].[Amount], [t].[CreatedAt], [t].[DestinationAccountId], [t].[Type]
+FROM [Transactions] AS [t]
+WHERE [t].[AccountId] = @accountId
+2026-06-30 21:31:00.787 +05:30 [INF] Executed action SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService) in 2382.4331ms
+2026-06-30 21:31:00.789 +05:30 [INF] Executed endpoint 'SmartBank.TransactionService.Controllers.TransactionController.Withdraw (SmartBank.TransactionService)'
+2026-06-30 21:31:00.792 +05:30 [ERR] Balance cannot be negative
+System.Exception: Balance cannot be negative
+   at SmartBank.TransactionService.Services.TransactionManager.Withdraw(WithdrawDto dto) in C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService\Services\TransactionManager.cs:line 79
+   at SmartBank.TransactionService.Controllers.TransactionController.Withdraw(WithdrawDto dto) in C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService\Controllers\TransactionController.cs:line 39
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\Admin\Desktop\Smart-Bank-App\SmartBankApp_MS\SmartBank.TransactionService\Middleware\ExceptionMiddleware.cs:line 21
+2026-06-30 21:31:00.805 +05:30 [INF] HTTP POST /api/Transaction/withdraw responded 400 in 2415.1225 ms
+2026-06-30 21:31:00.820 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5243/api/Transaction/withdraw - 400 null application/json 2446.4267ms

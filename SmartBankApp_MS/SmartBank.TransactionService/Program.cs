@@ -2,8 +2,18 @@ using Microsoft.EntityFrameworkCore;
 using SmartBank.TransactionService.Data;
 using SmartBank.TransactionService.Services;
 using SmartBank.TransactionService.Messaging;
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File(
+        "logs/transactionservice-.txt",
+        rollingInterval: RollingInterval.Day)
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
+Console.WriteLine(builder.Configuration.GetConnectionString("DefaultConnection"));
+builder.Host.UseSerilog();
 
 // ✅ Add services
 builder.Services.AddControllers();
@@ -11,8 +21,7 @@ builder.Services.AddControllers();
 // ✅ Database configuration
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
-        "Server=localhost\\SQLEXPRESS;Database=TransactionDB;Trusted_Connection=True;TrustServerCertificate=True;"
-    ));
+        builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // ✅ Register Transaction Service
 builder.Services.AddScoped<TransactionManager>();
@@ -29,12 +38,16 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// ✅ Middleware
 app.UseDeveloperExceptionPage();
+app.UseSerilogRequestLogging();
+
+app.UseMiddleware<ExceptionMiddleware>();
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

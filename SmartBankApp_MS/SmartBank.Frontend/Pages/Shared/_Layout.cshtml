@@ -4,130 +4,216 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SmartBank.Frontend</title>
+
     <script type="importmap"></script>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/css/bank.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/bank.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SmartBank.Frontend.styles.css" asp-append-version="true" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+          rel="stylesheet">
 </head>
+
 <body>
+
     <header>
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
 
-    <div class="container-fluid">
+            <div class="container-fluid">
 
-        <a class="navbar-brand fw-bold" asp-page="/Dashboard/Dashboard">
+                <a class="navbar-brand fw-bold"
+                   asp-page="/Dashboard/Dashboard">
 
-            <i class="bi bi-bank"></i>
+                    <i class="bi bi-bank"></i>
 
-            Smart Bank
+                    Smart Bank
 
-        </a>
+                </a>
 
-        <button class="navbar-toggler"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbar">
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbar">
 
-            <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
 
-        </button>
+                </button>
 
-        <div class="collapse navbar-collapse"
-             id="navbar">
+                <div class="collapse navbar-collapse"
+                     id="navbar">
 
-            <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto">
 
-                <li class="nav-item">
+                        <li class="nav-item">
 
-                    <a class="nav-link"
-                       asp-page="/Dashboard/Dashboard">
+                            <a class="nav-link"
+                               asp-page="/Dashboard/Dashboard">
 
-                        <i class="bi bi-speedometer2"></i>
+                                <i class="bi bi-speedometer2"></i>
 
-                        Dashboard
+                                Dashboard
 
-                    </a>
+                            </a>
 
-                </li>
+                        </li>
 
-                <li class="nav-item">
+                        <li class="nav-item">
 
-                    <a class="nav-link"
-                       asp-page="/Customers/Index">
+                            <a class="nav-link"
+                               asp-page="/Customers/Index">
 
-                        <i class="bi bi-people-fill"></i>
+                                <i class="bi bi-people-fill"></i>
 
-                        Customers
+                                Customers
 
-                    </a>
+                            </a>
 
-                </li>
+                        </li>
 
-                <li class="nav-item">
+                        <li class="nav-item">
 
-                    <a class="nav-link"
-                       asp-page="/Accounts/Index">
+                            <a class="nav-link"
+                               asp-page="/Accounts/Index">
 
-                        <i class="bi bi-credit-card-2-front-fill"></i>
+                                <i class="bi bi-credit-card-2-front-fill"></i>
 
-                        Accounts
+                                Accounts
 
-                    </a>
+                            </a>
 
-                </li>
+                        </li>
 
-                <li class="nav-item">
+                        <li class="nav-item dropdown">
 
-                    <a class="nav-link"
-                       asp-page="/Transactions/Statement">
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               role="button"
+                               data-bs-toggle="dropdown">
 
-                        <i class="bi bi-arrow-left-right"></i>
+                                <i class="bi bi-arrow-left-right"></i>
 
-                        Transactions
+                                Transactions
 
-                    </a>
+                            </a>
 
-                </li>
+                            <ul class="dropdown-menu">
 
-                <li class="nav-item">
+                                <li>
 
-                    <a class="nav-link text-warning"
-                       asp-page="/Auth/Login">
+                                    <a class="dropdown-item"
+                                       asp-page="/Transactions/Deposit">
 
-                        <i class="bi bi-box-arrow-right"></i>
+                                        Deposit
 
-                        Logout
+                                    </a>
 
-                    </a>
+                                </li>
 
-                </li>
+                                <li>
 
-            </ul>
+                                    <a class="dropdown-item"
+                                       asp-page="/Transactions/Withdraw">
 
-        </div>
+                                        Withdraw
 
-    </div>
+                                    </a>
 
-</nav>
+                                </li>
+
+                                <li>
+
+                                    <a class="dropdown-item"
+                                       asp-page="/Transactions/Transfer">
+
+                                        Transfer
+
+                                    </a>
+
+                                </li>
+
+                                <li>
+
+                                    <a class="dropdown-item"
+                                       asp-page="/Transactions/Statement">
+
+                                        Statement
+
+                                    </a>
+
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                               asp-page="/Auth/Login">
+
+                                <i class="bi bi-box-arrow-in-right"></i>
+
+                                Login
+
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                               asp-page="/Auth/Register">
+
+                                <i class="bi bi-person-plus-fill"></i>
+
+                                Register
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
     </header>
+
     <div class="container">
+
         <main role="main" class="pb-3">
+
             @RenderBody()
+
         </main>
+
     </div>
 
     <footer class="border-top footer text-muted">
+
         <div class="container">
-            &copy; 2026 - SmartBank.Frontend - <a asp-area="" asp-page="/Privacy">Privacy</a>
+
+            &copy; 2026 - SmartBank.Frontend -
+            <a asp-page="/Privacy">Privacy</a>
+
         </div>
+
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
+
 </html>

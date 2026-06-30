@@ -71,6 +71,7 @@ namespace SmartBank.AccountService
 
                 Console.WriteLine("Application started!");
                 Console.WriteLine("Swagger: http://localhost:5242/swagger");
+                Console.WriteLine("Swagger: https://localhost:7062/swagger");
 
                 app.Run();
             }
@@ -84,4 +85,4 @@ namespace SmartBank.AccountService
             }
         }
     }
-}
+} 

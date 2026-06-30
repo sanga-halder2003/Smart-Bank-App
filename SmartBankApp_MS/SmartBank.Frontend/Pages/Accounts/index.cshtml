@@ -1,0 +1,61 @@
+@page
+@model SmartBank.Frontend.Pages.Accounts.IndexModel
+
+<h2 class="mb-3">Accounts</h2>
+
+<p>
+    <a asp-page="Create" class="btn btn-success">
+        Open New Account
+    </a>
+</p>
+
+<table class="table table-striped table-bordered">
+
+    <thead class="table-dark">
+        <tr>
+            <th>Account No</th>
+            <th>Customer Id</th>
+            <th>Type</th>
+            <th>Balance</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+@foreach(var account in Model.Accounts)
+{
+    <tr>
+
+        <td>@account.AccountNumber</td>
+
+        <td>@account.CustomerId</td>
+
+        <td>@account.AccountType</td>
+
+        <td>@account.Balance</td>
+
+        <td>
+            @(account.IsActive ? "Active" : "Closed")
+        </td>
+
+        <td>
+
+            @if(account.IsActive)
+            {
+                <a asp-page="Close"
+                   asp-route-id="@account.AccountId"
+                   class="btn btn-danger btn-sm">
+                    Close
+                </a>
+            }
+
+        </td>
+
+    </tr>
+}
+
+    </tbody>
+
+</table>

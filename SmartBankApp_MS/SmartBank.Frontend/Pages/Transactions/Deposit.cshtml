@@ -1,0 +1,22 @@
+@page
+@model SmartBank.Frontend.Pages.Transactions.DepositModel
+
+<h2>Deposit Money</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label>Account Id</label>
+        <input asp-for="Deposit.AccountId" class="form-control"/>
+    </div>
+
+    <div class="mb-3">
+        <label>Amount</label>
+        <input asp-for="Deposit.Amount" class="form-control"/>
+    </div>
+
+    <button class="btn btn-success">
+        Deposit
+    </button>
+
+</form>

@@ -2,6 +2,7 @@
   <Project Path="SmartBank.AccountService/SmartBank.AccountService.csproj" />
   <Project Path="SmartBank.AuthService/SmartBank.AuthService.csproj" />
   <Project Path="SmartBank.CustomerServie/SmartBank.CustomerService.csproj" />
+  <Project Path="SmartBank.Frontend/SmartBank.Frontend.csproj" />
   <Project Path="SmartBank.Gateway/SmartBank.Gateway.csproj" />
   <Project Path="SmartBank.NotificationService/SmartBank.NotificationService.csproj" />
   <Project Path="SmartBank.TransactionService/SmartBank.TransactionService.csproj" />

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "SmartBank.Frontend/1.0.0": {
+        "runtime": {
+          "SmartBank.Frontend.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SmartBank.Frontend/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

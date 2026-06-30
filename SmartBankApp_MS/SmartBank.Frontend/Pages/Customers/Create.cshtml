@@ -1,0 +1,36 @@
+@page
+@model SmartBank.Frontend.Pages.Customers.CreateModel
+
+<h2>Add Customer</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label>Name</label>
+        <input asp-for="Customer.FullName" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Email</label>
+        <input asp-for="Customer.Email" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Phone</label>
+        <input asp-for="Customer.Phone" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Address</label>
+        <input asp-for="Customer.Address" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Save
+    </button>
+
+    <a asp-page="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
